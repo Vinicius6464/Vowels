@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    float renda, limite, gasto, totalGasto = 0;
+    int opcao;
+
+    // Entrada da renda
+    printf("Digite a renda mensal da familia: R$ ");
+    scanf("%f", &renda);
+
+    // Entrada do limite de gastos
+    printf("Digite o limite de gastos que querem controlar: R$ ");
+    scanf("%f", &limite);
+
+    do {
+        printf("\nDigite o valor do gasto (ou 0 para parar): R$ ");
+        scanf("%f", &gasto);
+
+        if (gasto > 0) {
+            totalGasto += gasto;
+
+            printf("Total gasto ate agora: R$ %.3f\n", totalGasto);
+
+            if (totalGasto > limite) {
+                printf("⚠️ ATENCAO: Voce ultrapassou o limite de gastos!\n");
+            } else {
+                printf("Ainda pode gastar: R$ %.3f\n", limite - totalGasto);
+            }
+        }
+
+    } while (gasto > 0);
+
+    printf("\nResumo do mes:\n");
+    printf("Renda da familia: R$ %.3f\n", renda);
+    printf("Limite de gastos: R$ %.3f\n", limite);
+    printf("Total gasto: R$ %.3f\n", totalGasto);
+    printf("Saldo final: R$ %.3f\n", renda - totalGasto);
+
+    if (totalGasto > limite) {
+        printf("⚠️ ATENCAO: Estourou o limite!\n");
+    } else {
+        printf("Parabens! Voce manteve os gastos dentro do limite.\n");
+    }
+
+    return 0;
+}
